@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# River Relief — Website
+
+Marketing site for River Relief, built with Next.js (App Router) and TypeScript. Deployed on Vercel.
+
+> **Note:** This repo currently lives at `LukeFlaherty/river-relief-website-rebuild` and deploys
+> from a personal Vercel account as a starting point. It will be transferred to a client-owned
+> GitHub org and Vercel project later — see `AGENTS.md` for details.
+
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, React 19, TypeScript)
+- [Tailwind CSS 4](https://tailwindcss.com)
+- ESLint + Prettier (with `prettier-plugin-tailwindcss` for class sorting)
+- GitHub Actions CI (`format:check`, `lint`, `typecheck`, `build`)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script                 | Purpose                               |
+| ---------------------- | ------------------------------------- |
+| `npm run dev`          | Start the local dev server            |
+| `npm run build`        | Production build                      |
+| `npm run start`        | Serve the production build            |
+| `npm run lint`         | ESLint                                |
+| `npm run typecheck`    | `tsc --noEmit`                        |
+| `npm run format`       | Format all files with Prettier        |
+| `npm run format:check` | Check formatting without writing (CI) |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    layout.tsx      # Root layout: fonts, metadata, header/footer shell
+    page.tsx         # The single homepage — composes section components
+    globals.css       # Tailwind entry + theme tokens
+  components/          # Presentational, one component per homepage section
+  lib/
+    site-config.ts     # ALL page copy, nav links, and contact info lives here
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Editing content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Nearly all text on the site (headings, copy, nav links, program descriptions,
+contact info, CTA links) lives in [`src/lib/site-config.ts`](src/lib/site-config.ts).
+Update that file rather than editing JSX in components — it keeps content
+changes low-risk and easy to review. Several values are placeholders marked
+`// TODO:` pending real client content (donation link, volunteer sign-up,
+social links, contact details).
 
-## Deploy on Vercel
+For more on how the project is organized and conventions to follow, see
+[`AGENTS.md`](AGENTS.md).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site deploys to Vercel on every push to `main` (Vercel's GitHub
+integration builds preview deployments for PRs and a production deployment
+for `main`). No `vercel.json` is needed — Next.js is auto-detected.

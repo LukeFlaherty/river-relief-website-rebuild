@@ -63,9 +63,11 @@ will fail CI.
 
 ## Deployment & repo ownership
 
-- Deploys to Vercel, connected via GitHub integration to the `main` branch
-  of `LukeFlaherty/river-relief-website-rebuild`. Pushing to `main` triggers
-  a production deploy; PRs get preview deploys automatically. No
+- Live at https://river-relief-website-rebuild.vercel.app. Vercel project
+  `lukeflahertys-projects/river-relief-website-rebuild` is connected via
+  GitHub integration to the `main` branch of
+  `LukeFlaherty/river-relief-website-rebuild`. Pushing to `main` triggers a
+  production deploy; PRs get preview deploys automatically. No
   `vercel.json` — Next.js is auto-detected.
 - **This repo and Vercel project are temporary.** They're owned by the
   developer (Luke Flaherty) as a starting point. At some point this will be

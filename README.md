@@ -61,6 +61,9 @@ For more on how the project is organized and conventions to follow, see
 
 ## Deployment
 
-The site deploys to Vercel on every push to `main` (Vercel's GitHub
-integration builds preview deployments for PRs and a production deployment
-for `main`). No `vercel.json` is needed — Next.js is auto-detected.
+Live at **https://river-relief-website-rebuild.vercel.app**.
+
+The Vercel project (`lukeflahertys-projects/river-relief-website-rebuild`) is
+connected to this GitHub repo's GitHub integration: pushes to `main` deploy
+to production automatically, and PRs get preview deployments. No
+`vercel.json` is needed — Next.js is auto-detected.

@@ -7,11 +7,22 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # River Relief Website — Agent Guide
 
-This is a marketing site for River Relief (a river cleanup / restoration /
-disaster-relief nonprofit — placeholder org, real mission details TBD from
-the client). It is intentionally a **single page** right now; the
+This is a marketing site for **River Relief LLC**, a personal-loan /
+debt-consolidation lender. **Despite the river branding and name, this is a
+financial services company, not an environmental nonprofit** — "River
+Relief" is a "river to lower payments" metaphor. (An earlier draft of this
+file and the copy incorrectly assumed a river-cleanup nonprofit; that was
+corrected 2026-07-17 after reviewing the client's actual site content and
+brand assets.) It is intentionally a **single page** right now; the
 infrastructure below is built to support growing it into a multi-page site
+(the client's real site has separate Home / About Us / FAQ / Contact pages)
 without rework.
+
+Current copy in `site-config.ts` is adapted from the client's existing
+site as a starting framework. Sections are being refined one at a time in
+follow-up passes — don't treat current wording as final, especially the
+`legal.disclosure` text (lending disclosures are compliance-sensitive;
+confirm current wording with the client before changing or removing it).
 
 ## Stack & versions
 
@@ -24,6 +35,30 @@ without rework.
 - ESLint (`eslint-config-next`) + Prettier with `prettier-plugin-tailwindcss`
   (auto-sorts Tailwind classes on format — don't hand-order classes, just run
   `npm run format`).
+
+## Brand
+
+- Colors are defined as Tailwind theme tokens in `src/app/globals.css`
+  (`@theme inline` block) and used via `bg-brand-*` / `text-brand-*` /
+  `border-brand-*` utilities — never hardcode hex values in components.
+  Source: client-provided brand colors, 2026-07-17.
+  - `brand-tan` `#fbecd3` — light background sections (hero, alternating bands)
+  - `brand-blue` `#21394a` — primary/dark brand color (CTAs, footer, headings accent)
+  - `brand-grey-light` `#9aa0a9`, `brand-grey-mid` `#7a7a7a`, `brand-grey-dark` `#33373d` — body text / borders, light to dark
+  - `background` (white `#ffffff`) — the default page background
+- Logo files live in `public/brand/`, sourced from the client's existing
+  site assets (2026-07-17):
+  - `logo-full-color.png` — dark wordmark + icon, for light backgrounds (header)
+  - `logo-white.png` — white wordmark + icon, for dark backgrounds (footer, on `brand-blue`)
+  - Favicon / `app/icon.png` / `app/apple-icon.png` were cropped from the
+    left ~111×111px icon mark of `logo-full-color.png` (see git history for
+    the exact crop if regenerating).
+  - `credit-score-graphic.png` — a generic marketing graphic from the
+    client's site (credit-score gauge stock photo); not currently used
+    anywhere, kept in case a future section needs it.
+- Dark mode is **not** implemented — the site is single-theme (light) by
+  design, matching the client's existing brand. Don't add
+  `dark:` variants without a reason.
 
 ## Repo conventions
 
@@ -41,10 +76,10 @@ without rework.
   must keep matching `id` attributes on their root `<section>` — the header
   nav and hero CTAs link to these anchors. If you rename a section or add a
   new one, update `siteConfig.nav` accordingly.
-- Placeholder values are marked `// TODO:` in `site-config.ts` (donation
-  link, volunteer sign-up link, social links, contact email/phone/address,
-  production domain). Don't invent real-looking values for these — leave the
-  TODOs until the client provides real content, or ask.
+- Placeholder values are marked `// TODO:` in `site-config.ts` (application
+  flow link, phone number, social links, contact email/address, production
+  domain). Don't invent real-looking values for these — leave the TODOs
+  until the client provides real content, or ask.
 
 ## Before committing
 

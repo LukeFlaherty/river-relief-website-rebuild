@@ -2,21 +2,25 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #33373d;
 }
 
+/*
+ * River Relief brand palette. Use these via Tailwind utilities, e.g.
+ * bg-brand-blue, text-brand-tan, border-brand-grey-light.
+ * Source: client-provided brand colors + logo files (2026-07-17).
+ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-brand-tan: #fbecd3;
+  --color-brand-blue: #21394a;
+  --color-brand-grey-light: #9aa0a9;
+  --color-brand-grey-dark: #33373d;
+  --color-brand-grey-mid: #7a7a7a;
 }
 
 body {

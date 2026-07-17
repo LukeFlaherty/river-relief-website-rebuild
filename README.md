@@ -1,6 +1,7 @@
 # River Relief — Website
 
-Marketing site for River Relief, built with Next.js (App Router) and TypeScript. Deployed on Vercel.
+Marketing site for River Relief LLC, a personal-loan / debt-consolidation
+lender. Built with Next.js (App Router) and TypeScript, deployed on Vercel.
 
 > **Note:** This repo currently lives at `LukeFlaherty/river-relief-website-rebuild` and deploys
 > from a personal Vercel account as a starting point. It will be transferred to a client-owned
@@ -49,12 +50,17 @@ src/
 
 ## Editing content
 
-Nearly all text on the site (headings, copy, nav links, program descriptions,
-contact info, CTA links) lives in [`src/lib/site-config.ts`](src/lib/site-config.ts).
-Update that file rather than editing JSX in components — it keeps content
-changes low-risk and easy to review. Several values are placeholders marked
-`// TODO:` pending real client content (donation link, volunteer sign-up,
-social links, contact details).
+Nearly all text on the site (headings, copy, nav links, process steps,
+contact info, CTA links, the legal disclosure) lives in
+[`src/lib/site-config.ts`](src/lib/site-config.ts). Update that file rather
+than editing JSX in components — it keeps content changes low-risk and easy
+to review. Several values are placeholders marked `// TODO:` pending real
+client content (application link, phone number, social links, contact
+details).
+
+Brand colors and logo files are documented in [`AGENTS.md`](AGENTS.md#brand)
+— colors are Tailwind theme tokens (`bg-brand-*` etc.) in
+`src/app/globals.css`, logos are in `public/brand/`.
 
 For more on how the project is organized and conventions to follow, see
 [`AGENTS.md`](AGENTS.md).

@@ -1,24 +1,27 @@
 import { siteConfig } from "@/lib/site-config";
 
 export function ProgramsSection() {
+  const { programs } = siteConfig;
+
   return (
-    <section id="programs" className="bg-slate-50 py-24 dark:bg-slate-900/40">
+    <section id="how-it-works" className="bg-brand-tan/40 py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
-          Our Programs
+        <h2 className="text-brand-grey-dark text-3xl font-bold tracking-tight sm:text-4xl">
+          {programs.heading}
         </h2>
         <div className="mt-12 grid gap-8 sm:grid-cols-3">
-          {siteConfig.programs.map((program) => (
+          {programs.items.map((program, index) => (
             <div
               key={program.title}
-              className="rounded-2xl border border-slate-200 bg-white p-8 dark:border-slate-800 dark:bg-slate-950"
+              className="border-brand-grey-light/30 rounded-2xl border bg-white p-8"
             >
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+              <div className="bg-brand-blue mb-4 flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-white">
+                {index + 1}
+              </div>
+              <h3 className="text-brand-grey-dark text-xl font-semibold">
                 {program.title}
               </h3>
-              <p className="mt-3 text-slate-600 dark:text-slate-300">
-                {program.description}
-              </p>
+              <p className="text-brand-grey-mid mt-3">{program.description}</p>
             </div>
           ))}
         </div>
